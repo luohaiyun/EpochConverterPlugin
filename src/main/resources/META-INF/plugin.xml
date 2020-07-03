@@ -1,19 +1,35 @@
 <idea-plugin url="www.jetbrains.com">
-    <id>org.jetbrains.plugins.template</id>
-    <name>Template</name>
-    <vendor>JetBrains</vendor>
+    <id>com.github.luohaiyun.timeconverter</id>
+    <name>TimeConverter</name>
+    <vendor>luohaiyun</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
-    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="org.jetbrains.plugins.template.services.MyApplicationService"/>
-        <projectService serviceImplementation="org.jetbrains.plugins.template.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.github.luohaiyun.plugin.timeconverter.service.TimeConverterUIManager"/>
     </extensions>
 
-    <projectListeners>
-        <listener class="org.jetbrains.plugins.template.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </projectListeners>
+    <actions>
+
+        <action id="$ShowTimeConverterDialogAction"
+                class="com.github.luohaiyun.plugin.timeconverter.action.ShowTimeConverterDialogAction"
+                text="Show TimeConverter Dialog..."
+                description="Open TimeConverter dialog"
+        >
+            <keyboard-shortcut keymap="$default" first-keystroke="control shift O"/>
+            <keyboard-shortcut keymap="Mac OS X" first-keystroke="control meta I" replace-all="true"/>
+            <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="control meta I" replace-all="true"/>
+        </action>
+
+        <group id="TimeConverterToolBar" text="Translation Toolbar Actions">
+            <separator/>
+            <reference ref="$ShowTimeConverterDialogAction"/>
+            <separator/>
+
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+        </group>
+    </actions>
 </idea-plugin>
