@@ -13,21 +13,24 @@ import javax.swing.*;
 public abstract class TimeConverterDialogForm extends DialogWrapper
 {
 	private JPanel mRootPanel;
-	private TitlePanel mTitlePanel;
 	private JTextField mConvertField;
 	private JButton mConvertButton;
 	private JTextField mNowField;
-	private JTextArea mConvertTextArea;
 	private JTextField mYearField;
 	private JTextField mMonField;
 	private JTextField mDayField;
 	private JTextField mHourField;
 	private JTextField mMinField;
 	private JTextField mSecField;
-	private JButton humanDateToTimestampButton;
-	private ComboBox mReConvertComboBox;
-	private JTextArea mReconvertResult;
-	private ComboBox<SelectionMode> mConvertComboBox;
+	private JButton mReConvertButton;
+	private ComboBox<SelectionMode> mReConvertComboBox;
+	private JTextArea mReConvertTextArea;
+	private TitlePanel mTitlePanel;
+	private JTextField mConvertGMTTextField;
+	private JTextField mConvertLocalTextField;
+	private JTextField mConvertRelativeTextField;
+	private JLabel mConvertAssumingLabel;
+	private JPanel mConvertResultPanel;
 
 	protected TimeConverterDialogForm(@Nullable Project project)
 	{
@@ -35,9 +38,88 @@ public abstract class TimeConverterDialogForm extends DialogWrapper
 	}
 
 	@NotNull
+	protected final JTextField getConvertLocalTextField()
+	{
+		return mConvertLocalTextField;
+	}
+
+	@NotNull
+	protected final JTextField getConvertGMTTextField()
+	{
+		return mConvertGMTTextField;
+	}
+
+
+	@NotNull
+	protected final JTextField getConvertRelativeTextField()
+	{
+		return mConvertRelativeTextField;
+	}
+
+	@NotNull
+	protected final JLabel getConvertAssumingLabel()
+	{
+		return mConvertAssumingLabel;
+	}
+
+	@NotNull
+	protected final JPanel getConvertResultPanel()
+	{
+		return mConvertResultPanel;
+	}
+
+	@NotNull
 	protected final JComponent getComponent()
 	{
 		return mRootPanel;
+	}
+
+	@NotNull
+	protected final JTextField getNowField()
+	{
+		return mNowField;
+	}
+
+	@NotNull
+	protected final JTextField getYearField()
+	{
+		return mYearField;
+	}
+
+	@NotNull
+	protected final JTextField getMonField()
+	{
+		return mMonField;
+	}
+
+	@NotNull
+	protected final JTextField getDayField()
+	{
+		return mDayField;
+	}
+
+	@NotNull
+	protected final JTextField getSecField()
+	{
+		return mSecField;
+	}
+
+	@NotNull
+	protected final JTextField getMinField()
+	{
+		return mMinField;
+	}
+
+	@NotNull
+	protected final JTextField getHourField()
+	{
+		return mHourField;
+	}
+
+	@NotNull
+	protected final JButton getReConvertButton()
+	{
+		return mReConvertButton;
 	}
 
 	@NotNull
@@ -59,22 +141,15 @@ public abstract class TimeConverterDialogForm extends DialogWrapper
 	}
 
 	@NotNull
-	protected final ComboBox<SelectionMode> getConvertComboBox()
-	{
-		return mConvertComboBox;
-	}
-
-	@NotNull
 	protected final ComboBox<SelectionMode> getReConvertComboBox()
 	{
 		return mReConvertComboBox;
 	}
 
 	@NotNull
-	protected final JTextArea getConvertTextArea()
+	protected final JTextArea getReConvertTextArea()
 	{
-		return mConvertTextArea;
+		return mReConvertTextArea;
 	}
-
 
 }

@@ -16,15 +16,16 @@
 
         <action id="$ShowTimeConverterDialogAction"
                 class="com.github.luohaiyun.plugin.timeconverter.action.ShowTimeConverterDialogAction"
-                text="Show TimeConverter Dialog..."
-                description="Open TimeConverter dialog"
+                icon="Icons.Clock"
+                text="Show Epoch Converter Dialog..."
+                description="Open Epoch dialog"
         >
             <keyboard-shortcut keymap="$default" first-keystroke="control shift O"/>
             <keyboard-shortcut keymap="Mac OS X" first-keystroke="control meta I" replace-all="true"/>
             <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="control meta I" replace-all="true"/>
         </action>
 
-        <group id="TimeConverterToolBar" text="Translation Toolbar Actions">
+        <group id="TimeConverterToolBar" text="Epoch Toolbar Actions">
             <separator/>
             <reference ref="$ShowTimeConverterDialogAction"/>
             <separator/>
