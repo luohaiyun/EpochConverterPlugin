@@ -70,6 +70,7 @@ class TimeConverterDialog(private val project: Project?) : TimeConverterDialogFo
         initReConvertComboBox()
         initReadOnlyTextField()
         initConvertResultPanel()
+        initLabel()
         convertButton.apply {
             addActionListener { convertInternal(convertField.text) }
         }
@@ -85,6 +86,11 @@ class TimeConverterDialog(private val project: Project?) : TimeConverterDialogFo
         convertLocalTextField.border = null
         convertRelativeTextField.border = null
     }
+
+    private fun initLabel(){
+
+    }
+
 
 
     private fun initReConvertComboBox() = with(reConvertComboBox) {
@@ -131,13 +137,17 @@ class TimeConverterDialog(private val project: Project?) : TimeConverterDialogFo
 
     private fun convertInternal(text: String) {
         val timestamp = text.toLong()
-        val converted = Dates.timestampToLocalDateStr(timestamp)
         convertResultPanel.isVisible = true
-        convertAssumingLabel.text = "seconds"
-        convertGMTTextField.text = Dates.getGMTDateStr()
-        convertLocalTextField.text = Dates.getLocalDateStr()
+        val timeUnit = Dates.getTimeUnit(timestamp)
+        if (timeUnit == TimeUnit.SECONDS) {
+            convertAssumingLabel.text = message("dialog.label.seconds")
+        } else {
+            convertAssumingLabel.text = message("dialog.label.milliseconds")
+        }
+        convertGMTTextField.text = Dates.timestampToGMTDateStr(timestamp)
+        convertLocalTextField.text = Dates.timestampToLocalDateStr(timestamp)
+        convertRelativeTextField.text = Dates.getFromNow(timestamp)
     }
-
 
     private fun setListeners() {
         windowListener = object : WindowAdapter() {
