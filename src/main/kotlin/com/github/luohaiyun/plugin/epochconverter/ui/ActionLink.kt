@@ -1,4 +1,4 @@
-package com.github.luohaiyun.plugin.timeconverter.ui
+package com.github.luohaiyun.plugin.epochconverter.ui
 
 import com.intellij.ui.components.labels.LinkLabel
 import com.intellij.ui.components.labels.LinkListener

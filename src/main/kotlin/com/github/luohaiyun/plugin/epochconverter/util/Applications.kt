@@ -1,6 +1,6 @@
-package com.github.luohaiyun.plugin.timeconverter.util
+package com.github.luohaiyun.plugin.epochconverter.util
 
-import com.github.luohaiyun.plugin.timeconverter.service.TimeConverterUIManager
+import com.github.luohaiyun.plugin.epochconverter.service.EpochConverterUIManager
 import com.intellij.ide.IdeBundle
 import com.intellij.ide.plugins.IdeaPluginDescriptor
 import com.intellij.ide.plugins.PluginManager
@@ -67,7 +67,7 @@ object Plugin {
 
 inline val Application: Application get() = ApplicationManager.getApplication()
 
-inline val TimeConverterUIManager: TimeConverterUIManager get() = TimeConverterUIManager.instance
+inline val EpochConverterUIManager: EpochConverterUIManager get() = EpochConverterUIManager.instance
 
 
 /**

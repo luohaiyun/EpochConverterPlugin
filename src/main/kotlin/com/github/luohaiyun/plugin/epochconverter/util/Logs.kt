@@ -1,4 +1,4 @@
-package com.github.luohaiyun.plugin.timeconverter.util
+package com.github.luohaiyun.plugin.epochconverter.util
 
 import com.intellij.openapi.diagnostic.Logger
 

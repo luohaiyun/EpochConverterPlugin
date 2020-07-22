@@ -4,7 +4,7 @@
  */
 @file:Suppress("unused")
 
-package com.github.luohaiyun.plugin.timeconverter.ui
+package com.github.luohaiyun.plugin.epochconverter.ui
 
 import javax.swing.JComponent
 

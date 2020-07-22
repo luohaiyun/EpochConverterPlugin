@@ -1,4 +1,4 @@
-package com.github.luohaiyun.plugin.timeconverter.ui
+package com.github.luohaiyun.plugin.epochconverter.ui
 
 import java.awt.Color
 import javax.swing.UIManager

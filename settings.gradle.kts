@@ -1,1 +1,1 @@
-rootProject.name = "TimeConverter"
+rootProject.name = "EpochConverterPlugin"

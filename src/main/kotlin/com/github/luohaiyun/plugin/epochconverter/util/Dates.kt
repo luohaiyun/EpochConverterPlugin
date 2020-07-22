@@ -1,4 +1,4 @@
-package com.github.luohaiyun.plugin.timeconverter.util
+package com.github.luohaiyun.plugin.epochconverter.util
 
 import java.time.Instant
 import java.time.ZoneId

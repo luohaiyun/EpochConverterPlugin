@@ -1,9 +1,9 @@
-package com.github.luohaiyun.plugin.timeconverter.service
+package com.github.luohaiyun.plugin.epochconverter.service
 
-import com.github.luohaiyun.plugin.timeconverter.ui.TimeConverterDialog
-import com.github.luohaiyun.plugin.timeconverter.util.Application
-import com.github.luohaiyun.plugin.timeconverter.util.checkDispatchThread
-import com.github.luohaiyun.plugin.timeconverter.util.d
+import com.github.luohaiyun.plugin.epochconverter.ui.EpochConverterDialog
+import com.github.luohaiyun.plugin.epochconverter.util.Application
+import com.github.luohaiyun.plugin.epochconverter.util.checkDispatchThread
+import com.github.luohaiyun.plugin.epochconverter.util.d
 import com.intellij.ide.AppLifecycleListener
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.components.ServiceManager
@@ -13,9 +13,9 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogWrapper
 import com.intellij.openapi.util.Disposer
 
-class TimeConverterUIManager private constructor() {
+class EpochConverterUIManager private constructor() {
 
-    private val dialogMap: MutableMap<Project?, TimeConverterDialog> = HashMap()
+    private val dialogMap: MutableMap<Project?, EpochConverterDialog> = HashMap()
 
     init {
         Application.messageBus.connect().subscribe(AppLifecycleListener.TOPIC, object : AppLifecycleListener {
@@ -28,11 +28,11 @@ class TimeConverterUIManager private constructor() {
      *
      * @return 对话框实例
      */
-    fun showDialog(project: Project?): TimeConverterDialog {
+    fun showDialog(project: Project?): EpochConverterDialog {
         return showDialog(
                 project,
                 dialogMap
-        ) { TimeConverterDialog(project) }
+        ) { EpochConverterDialog(project) }
     }
 
 
@@ -54,12 +54,12 @@ class TimeConverterUIManager private constructor() {
     }
 
     companion object {
-        private val LOGGER: Logger = Logger.getInstance(TimeConverterUIManager::class.java)
+        private val LOGGER: Logger = Logger.getInstance(EpochConverterUIManager::class.java)
 
-        val instance: TimeConverterUIManager
-            get() = ServiceManager.getService(TimeConverterUIManager::class.java)
+        val instance: EpochConverterUIManager
+            get() = ServiceManager.getService(EpochConverterUIManager::class.java)
 
-        private fun checkThread() = checkDispatchThread(TimeConverterUIManager::class.java)
+        private fun checkThread() = checkDispatchThread(EpochConverterUIManager::class.java)
 
         private inline fun <D : DialogWrapper> showDialog(
                 project: Project?,

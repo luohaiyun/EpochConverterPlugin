@@ -9,13 +9,13 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.luohaiyun.plugin.timeconverter.service.TimeConverterUIManager"/>
+        <applicationService serviceImplementation="com.github.luohaiyun.plugin.epochconverter.service.EpochConverterUIManager"/>
     </extensions>
 
     <actions>
 
-        <action id="$ShowTimeConverterDialogAction"
-                class="com.github.luohaiyun.plugin.timeconverter.action.ShowTimeConverterDialogAction"
+        <action id="$ShowEpochConverterDialogAction"
+                class="com.github.luohaiyun.plugin.epochconverter.action.ShowEpochConverterDialogAction"
                 icon="Icons.Clock"
                 text="Show Epoch Converter Dialog..."
                 description="Open Epoch dialog"
@@ -27,7 +27,7 @@
 
         <group id="TimeConverterToolBar" text="Epoch Toolbar Actions">
             <separator/>
-            <reference ref="$ShowTimeConverterDialogAction"/>
+            <reference ref="$ShowEpochConverterDialogAction"/>
             <separator/>
 
             <add-to-group group-id="MainToolBar" anchor="last"/>

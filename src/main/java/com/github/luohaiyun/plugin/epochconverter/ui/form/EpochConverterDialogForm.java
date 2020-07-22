@@ -1,6 +1,6 @@
-package com.github.luohaiyun.plugin.timeconverter.ui.form;
+package com.github.luohaiyun.plugin.epochconverter.ui.form;
 
-import com.github.luohaiyun.plugin.timeconverter.util.SelectionMode;
+import com.github.luohaiyun.plugin.epochconverter.util.SelectionMode;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.DialogWrapper;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public abstract class TimeConverterDialogForm extends DialogWrapper
+public abstract class EpochConverterDialogForm extends DialogWrapper
 {
 	private JPanel mRootPanel;
 	private JTextField mConvertField;
@@ -24,17 +24,45 @@ public abstract class TimeConverterDialogForm extends DialogWrapper
 	private JTextField mSecField;
 	private JButton mReConvertButton;
 	private ComboBox<SelectionMode> mReConvertComboBox;
-	private JTextArea mReConvertTextArea;
 	private TitlePanel mTitlePanel;
 	private JTextField mConvertGMTTextField;
 	private JTextField mConvertLocalTextField;
 	private JTextField mConvertRelativeTextField;
 	private JLabel mConvertAssumingLabel;
 	private JPanel mConvertResultPanel;
+	private JLabel mEpochTimestampLabel;
+	private JTextField mReConvertEpochTimestampTextField;
+	private JTextField mReConvertLocalTextField;
+	private JTextField mReConvertGMTTextField;
+	private JPanel mReConvertResultPanel;
 
-	protected TimeConverterDialogForm(@Nullable Project project)
+	protected EpochConverterDialogForm(@Nullable Project project)
 	{
 		super(project);
+	}
+
+	@NotNull
+	protected final JPanel getReConvertResultPanel()
+	{
+		return mReConvertResultPanel;
+	}
+
+	@NotNull
+	protected final JTextField getReConvertEpochTimestampTextField()
+	{
+		return mReConvertEpochTimestampTextField;
+	}
+
+	@NotNull
+	protected final JTextField getReConvertLocalTextField()
+	{
+		return mReConvertLocalTextField;
+	}
+
+	@NotNull
+	protected final JTextField getReConvertGMTTextField()
+	{
+		return mReConvertGMTTextField;
 	}
 
 	@NotNull
@@ -48,7 +76,6 @@ public abstract class TimeConverterDialogForm extends DialogWrapper
 	{
 		return mConvertGMTTextField;
 	}
-
 
 	@NotNull
 	protected final JTextField getConvertRelativeTextField()
@@ -146,10 +173,5 @@ public abstract class TimeConverterDialogForm extends DialogWrapper
 		return mReConvertComboBox;
 	}
 
-	@NotNull
-	protected final JTextArea getReConvertTextArea()
-	{
-		return mReConvertTextArea;
-	}
 
 }

@@ -1,4 +1,4 @@
-package com.github.luohaiyun.plugin.timeconverter
+package com.github.luohaiyun.plugin.epochconverter
 
 import com.intellij.openapi.Disposable
 

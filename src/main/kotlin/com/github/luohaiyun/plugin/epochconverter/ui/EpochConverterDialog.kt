@@ -1,10 +1,10 @@
-package com.github.luohaiyun.plugin.timeconverter.ui
+package com.github.luohaiyun.plugin.epochconverter.ui
 
-import com.github.luohaiyun.plugin.timeconverter.View
-import com.github.luohaiyun.plugin.timeconverter.message
-import com.github.luohaiyun.plugin.timeconverter.ui.form.TimeConverterDialogForm
-import com.github.luohaiyun.plugin.timeconverter.util.Dates
-import com.github.luohaiyun.plugin.timeconverter.util.SelectionMode
+import com.github.luohaiyun.plugin.epochconverter.View
+import com.github.luohaiyun.plugin.epochconverter.message
+import com.github.luohaiyun.plugin.epochconverter.ui.form.EpochConverterDialogForm
+import com.github.luohaiyun.plugin.epochconverter.util.Dates
+import com.github.luohaiyun.plugin.epochconverter.util.SelectionMode
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.Disposer
 import com.intellij.ui.*
@@ -15,12 +15,13 @@ import com.intellij.util.ui.JBEmptyBorder
 import icons.Icons
 import java.awt.*
 import java.awt.event.*
+import java.util.*
 import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.TimeUnit
 import javax.swing.JComponent
 import javax.swing.border.LineBorder
 
-class TimeConverterDialog(private val project: Project?) : TimeConverterDialogForm(project), View {
+class EpochConverterDialog(private val project: Project?) : EpochConverterDialogForm(project), View {
 
 
     private val closeButton = ActionLink(icon = Icons.Close, hoveringIcon = Icons.ClosePressed) { close() }
@@ -59,7 +60,7 @@ class TimeConverterDialog(private val project: Project?) : TimeConverterDialogFo
     private fun initScheduled() {
         scheduledFuture = AppExecutorUtil.getAppScheduledExecutorService().scheduleWithFixedDelay({
             nowField.text = (System.currentTimeMillis() / 1000).toString()
-        }, 1, 1, TimeUnit.SECONDS)
+        }, 0, 1, TimeUnit.SECONDS)
 
     }
 
@@ -69,15 +70,19 @@ class TimeConverterDialog(private val project: Project?) : TimeConverterDialogFo
         initTitle()
         initReConvertComboBox()
         initReadOnlyTextField()
-        initConvertResultPanel()
         initLabel()
+        initConvertTextField()
+        initReConvertTextField()
         convertButton.apply {
-            addActionListener { convertInternal(convertField.text) }
+            addActionListener { convert() }
         }
-    }
-
-    private fun initConvertResultPanel() = with(convertResultPanel) {
-        isVisible = false
+        reConvertButton.apply {
+            addActionListener {
+                reConvert()
+            }
+        }
+        convert()
+        reConvert()
     }
 
     private fun initReadOnlyTextField() {
@@ -85,12 +90,28 @@ class TimeConverterDialog(private val project: Project?) : TimeConverterDialogFo
         convertGMTTextField.border = null
         convertLocalTextField.border = null
         convertRelativeTextField.border = null
+        reConvertLocalTextField.border = null
+        reConvertEpochTimestampTextField.border = null
+        reConvertGMTTextField.border = null
     }
 
-    private fun initLabel(){
-
+    private fun initConvertTextField() {
+        convertField.text = (System.currentTimeMillis() / 1000).toString()
     }
 
+    private fun initReConvertTextField() {
+        val calendar = Calendar.getInstance()
+        yearField.text = calendar.get(Calendar.YEAR).toString()
+        monField.text = (calendar.get(Calendar.MONTH) + 1).toString()
+        dayField.text = calendar.get(Calendar.DAY_OF_MONTH).toString()
+        hourField.text = calendar.get(Calendar.HOUR_OF_DAY).toString()
+        minField.text = calendar.get(Calendar.MINUTE).toString()
+        secField.text = calendar.get(Calendar.SECOND).toString()
+    }
+
+    private fun initLabel() {
+
+    }
 
 
     private fun initReConvertComboBox() = with(reConvertComboBox) {
@@ -134,9 +155,30 @@ class TimeConverterDialog(private val project: Project?) : TimeConverterDialogFo
         }
     }
 
+    private fun reConvert() {
 
-    private fun convertInternal(text: String) {
-        val timestamp = text.toLong()
+        reConvertResultPanel.isVisible = true
+
+        val selectionMode = reConvertComboBox.selectedItem as SelectionMode
+
+        val calendar = if (selectionMode == SelectionMode.GMT) {
+            Calendar.getInstance(TimeZone.getTimeZone(SelectionMode.GMT.name));
+        } else {
+            Calendar.getInstance()
+        }
+
+        calendar.set(yearField.text.toInt(), monField.text.toInt() - 1, dayField.text.toInt(), hourField.text.toInt(), minField.text.toInt(), secField.text.toInt())
+
+        val timestamp = calendar.time.time
+
+        reConvertGMTTextField.text = Dates.timestampToGMTDateStr(timestamp)
+        reConvertLocalTextField.text = Dates.timestampToLocalDateStr(timestamp)
+        reConvertEpochTimestampTextField.text = (timestamp / 1000) .toString()
+    }
+
+
+    private fun convert() {
+        val timestamp = convertField.text.toLong()
         convertResultPanel.isVisible = true
         val timeUnit = Dates.getTimeUnit(timestamp)
         if (timeUnit == TimeUnit.SECONDS) {
