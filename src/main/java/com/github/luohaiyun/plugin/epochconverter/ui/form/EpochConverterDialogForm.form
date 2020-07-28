@@ -18,7 +18,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="46003" class="javax.swing.JLabel">
+          <component id="46003" class="javax.swing.JLabel" binding="mCurrentEpochTimeLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -57,7 +57,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="7b016" class="javax.swing.JLabel">
+          <component id="7b016" class="javax.swing.JLabel" binding="mConvertEpochTipsLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -73,7 +73,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="1adf1" class="javax.swing.JLabel">
+              <component id="1adf1" class="javax.swing.JLabel" binding="mConvertSupportTipsLabel">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -138,7 +138,7 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="531cc" class="javax.swing.JLabel">
+                      <component id="531cc" class="javax.swing.JLabel" binding="mConvertAssumingTipsLabel">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -166,7 +166,7 @@
                           <editable value="false"/>
                         </properties>
                       </component>
-                      <component id="5b46" class="javax.swing.JLabel">
+                      <component id="5b46" class="javax.swing.JLabel" binding="mConvertGMTLabel">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -194,7 +194,7 @@
                           <editable value="false"/>
                         </properties>
                       </component>
-                      <component id="e604c" class="javax.swing.JLabel">
+                      <component id="e604c" class="javax.swing.JLabel" binding="mConvertLocalLabel">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -222,7 +222,7 @@
                           <editable value="false"/>
                         </properties>
                       </component>
-                      <component id="cf3bc" class="javax.swing.JLabel">
+                      <component id="cf3bc" class="javax.swing.JLabel" binding="mConvertRelativeLabel">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -251,7 +251,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="442ae" class="javax.swing.JLabel">
+          <component id="442ae" class="javax.swing.JLabel" binding="mReConvertYearLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -260,7 +260,7 @@
               <verticalAlignment value="0"/>
             </properties>
           </component>
-          <component id="5b123" class="javax.swing.JLabel">
+          <component id="5b123" class="javax.swing.JLabel" binding="mReConvertMonLabel">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -268,7 +268,7 @@
               <text resource-bundle="messages/EpochConverterBundle" key="menu.label.month"/>
             </properties>
           </component>
-          <component id="85b1f" class="javax.swing.JLabel">
+          <component id="85b1f" class="javax.swing.JLabel" binding="mReConvertDayLabel">
             <constraints>
               <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -276,7 +276,7 @@
               <text resource-bundle="messages/EpochConverterBundle" key="menu.label.day"/>
             </properties>
           </component>
-          <component id="e015e" class="javax.swing.JLabel">
+          <component id="e015e" class="javax.swing.JLabel" binding="mReConvertHourLabel">
             <constraints>
               <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -284,7 +284,7 @@
               <text resource-bundle="messages/EpochConverterBundle" key="menu.label.hour"/>
             </properties>
           </component>
-          <component id="4f219" class="javax.swing.JLabel">
+          <component id="4f219" class="javax.swing.JLabel" binding="mReConvertMinLabel">
             <constraints>
               <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -292,7 +292,7 @@
               <text resource-bundle="messages/EpochConverterBundle" key="menu.label.minute"/>
             </properties>
           </component>
-          <component id="48939" class="javax.swing.JLabel">
+          <component id="48939" class="javax.swing.JLabel" binding="mReConvertSecLabel">
             <constraints>
               <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -445,7 +445,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="1599c" class="javax.swing.JLabel">
+              <component id="1599c" class="javax.swing.JLabel" binding="mReConvertGMTLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -473,7 +473,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="2f4dd" class="javax.swing.JLabel">
+              <component id="2f4dd" class="javax.swing.JLabel" binding="mReConvertLocalLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>

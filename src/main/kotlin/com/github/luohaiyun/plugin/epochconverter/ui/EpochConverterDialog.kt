@@ -5,6 +5,7 @@ import com.github.luohaiyun.plugin.epochconverter.message
 import com.github.luohaiyun.plugin.epochconverter.ui.form.EpochConverterDialogForm
 import com.github.luohaiyun.plugin.epochconverter.util.Dates
 import com.github.luohaiyun.plugin.epochconverter.util.SelectionMode
+import com.github.luohaiyun.plugin.epochconverter.util.alphaBlend
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.Disposer
 import com.intellij.ui.*
@@ -12,6 +13,7 @@ import com.intellij.ui.components.panels.NonOpaquePanel
 import com.intellij.util.concurrency.AppExecutorUtil
 import com.intellij.util.ui.JBDimension
 import com.intellij.util.ui.JBEmptyBorder
+import com.intellij.util.ui.JBFont
 import icons.Icons
 import java.awt.*
 import java.awt.event.*
@@ -68,11 +70,17 @@ class EpochConverterDialog(private val project: Project?) : EpochConverterDialog
         rootPane.andTransparent()
 
         initTitle()
+        initPanel()
         initReConvertComboBox()
         initReadOnlyTextField()
         initLabel()
         initConvertTextField()
         initReConvertTextField()
+        initFont()
+
+        convert()
+        reConvert()
+
         convertButton.apply {
             addActionListener { convert() }
         }
@@ -81,8 +89,31 @@ class EpochConverterDialog(private val project: Project?) : EpochConverterDialog
                 reConvert()
             }
         }
-        convert()
-        reConvert()
+    }
+
+    private fun initPanel(){
+        component.apply {
+            background =  UI.getColor("ToolWindow.Header.background", JBColor(0xEEF1F3, 0x353739))
+                    ?.alphaBlend(CONTENT_BACKGROUND, 0.6f)
+            val borderColor = UI.getBordersColor(JBColor(0xB1B1B1, 0x282828))
+            border = SideBorder(borderColor, SideBorder.BOTTOM)
+        }
+    }
+
+    private fun initFont(){
+
+        UI.primaryFont(17).asBold().let {
+            nowField.font = it
+        }
+
+        UI.primaryFont(10).asBold().let {
+            convertGMTLabel.font = it
+            convertLocalLabel.font = it
+            convertRelativeLabel.font = it
+            epochTimestampLabel.font = it
+            convertAssumingLabel.font = it
+        }
+
     }
 
     private fun initReadOnlyTextField() {
@@ -347,10 +378,6 @@ class EpochConverterDialog(private val project: Project?) : EpochConverterDialog
             get() = JBColor(Color.WHITE, UI.getColor("Editor.background", Color(0x2B2B2B))!!)
         private val DEFAULT_BORDER_COLOR = JBColor(0x808080, 0x232323)
         private val BORDER get() = LineBorder(UI.getBordersColor(DEFAULT_BORDER_COLOR))
-
-        private const val CARD_MASSAGE = "message"
-        private const val CARD_PROCESSING = "processing"
-        private const val CARD_TRANSLATION = "translation"
     }
 
 }
